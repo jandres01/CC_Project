@@ -12,11 +12,13 @@ add_df = add_df[['senders_email_tld']].applymap(lambda x: x.split('.')[0])
 df = df.drop(['senders_email_tld'], axis=1)
 df = df.set_index('id').join(add_df)
 
-dfY = df[df['target_phishYN']=="Y"]
-dfN = df[df['target_phishYN']=="N"]
+#dfY = df[df['target_phishYN'] == 'Y']
+#dfN = df[df['target_phishYN'] == 'N']
 
-corrY = dfY.corr()
-corrN = dfN.corr()
+df = df.replace({'target_phishYN':{'Y':1, 'N':0}})
 
-print corrY
-print corrN
+corr = df.corr()
+#corrY = dfY.corr()
+#corrN = dfN.corr()
+
+print corr
