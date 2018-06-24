@@ -6,6 +6,7 @@ from keras.layers import Activation
 from keras.optimizers import SGD
 from keras.layers import Dense, Dropout
 from keras.utils import np_utils
+import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import argparse
@@ -24,7 +25,7 @@ def read_data():
 def splitData(data):
     #Split Data testing & training
     perc = np.random.rand(len(data)) < 0.9
-    training = data[perc]
+    training = data#[perc]
     testing = data[~perc]
     gid = testing.groupby('id')
     id_test = []
@@ -101,12 +102,34 @@ def main():
     acc_phish = float(ct_phish)/phish_total
     output["acc_phish"] = acc_phish
     output["acc_file"] = acc_file
+    
+    output.to_csv('FFNN_whole_pred_3.csv')
+    cm_pred = pred.flatten()
 
-    output.to_csv('FFNN_final_pred.csv')
+    #Display Confusion Matrix
+    df_confusion = pd.crosstab(y, cm_pred, rownames=['Actual'], colnames=['Predicted'], margins=True)
+    df_conf_norm = df_confusion / df_confusion.sum(axis=1)
+    
+    def plot_confusion_matrix(df_confusion, title='Confusion matrix', cmap=plt.cm.Blues):
+      plt.matshow(df_confusion, cmap=cmap)
+      plt.title(title)
+      plt.colorbar()
+      tick_marks = np.arange(len(df_confusion.columns))
+      plt.xticks(tick_marks, df_confusion.columns, rotation=45)
+      plt.yticks(tick_marks, df_confusion.index)
+      #plt.tight_layout()
+      plt.ylabel(df_confusion.index.name)
+      plt.xlabel(df_confusion.columns.name)
+      plt.subplots(figsize=(9, 7))
+     
+
+    fig = plot_confusion_matrix(df_confusion)
+    norm_fig = plot_confusion_matrix(df_conf_norm)   
+    plt.show()
 
     # dump the network architecture and weights to file
     print("[INFO] dumping architecture and weights to file...")
-    model.save("FFNN_model.h5")
+    model.save("FFNN_whole_model_3.h5")
 
 if __name__ == "__main__":
     main()
