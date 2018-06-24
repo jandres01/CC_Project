@@ -25,13 +25,13 @@ Security Project for CC
 #### FFNN Algorithm Best Testing Results Report
 - /CC_Project/FFNN/FFNN_final_test_model_30perc.csv
 - /CC_Project/FFNN/Count_final_test_model_30perc.png
-- /CC_Project/FFNN/Norm_final_test_model_30perc.png
+- /CC_Project/FFNN/Norm_final_test_model_30perc.png <br/>
 **81% success rate** with discovering a phishing email <br/>
 **88% accuracy rate** for all predictions <br/>
 **90% evaluation rate** on training <br/>
 
 ## Density-based spatial clustering of applications with noise (DBSCAN) 
-**Script** - /CC_Project/DBSCAN/dbscan.py
-**Results** - /CC_Project/DBSCAN/DBSCAN_Clusters.png
+**Script** - /CC_Project/DBSCAN/dbscan.py <br/>
+**Results** - /CC_Project/DBSCAN/DBSCAN_Clusters.png <br/>
 Discovered **899 clusters** in the dataset
 
