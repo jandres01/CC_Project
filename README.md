@@ -1,6 +1,10 @@
 # CC_Project
 Security Project for CC
 
+# Data
+- Num_Phish_Emails = 1948   
+- Size of Dataset = 10799
+
 ## Used Correlation Matrices to gain insights on Phishing Emails 
 Visual - Actual numbers of Whole Data   - /CC_Project/Correlation\ Matrix/corr_wholeData.png <br/>
 Graphs - Correlation of Regular Emails  - /CC_Project/Correlation\ Matrix/Corr_Reg_Email.png <br/>
