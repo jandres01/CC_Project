@@ -4,8 +4,8 @@ Security Project for CC
 ## Used Correlation Matrices to gain insights on Phishing Emails 
 Visual - Actual numbers of Whole Data   - /CC_Project/Correlation\ Matrix/corr_wholeData.png <br/>
 Graphs - Correlation of Regular Emails  - /CC_Project/Correlation\ Matrix/Corr_Reg_Email.png <br/>
-\vspace*{50mm} - Correlation of Whole Data      - /CC_Project/Correlation\ Matrix/Corr Whole Data.png <br/>
-\vspace*{50mm} - Correlation of Phishing Emails -/CC_Project/Correlation\ Matrix/CCorr_Phish_Data <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Correlation of Whole Data      - /CC_Project/Correlation\ Matrix/Corr Whole Data.png <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Correlation of Phishing Emails -/CC_Project/Correlation\ Matrix/CCorr_Phish_Data <br/>
 Script - /CC_Project/Correlation\ Matrix/CorrMatrix.py
 
 #### Phishing Emails have strong Relationships to
