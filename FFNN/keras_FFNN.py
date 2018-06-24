@@ -25,7 +25,7 @@ def read_data():
 def splitData(data):
     #Split Data testing & training
     perc = np.random.rand(len(data)) < 0.9
-    training = data#[perc]
+    training = data[perc]
     testing = data[~perc]
     gid = testing.groupby('id')
     id_test = []
@@ -103,7 +103,7 @@ def main():
     output["acc_phish"] = acc_phish
     output["acc_file"] = acc_file
     
-    output.to_csv('FFNN_whole_pred_3.csv')
+    output.to_csv('FFNN_final_test_model_30perc.csv')
     cm_pred = pred.flatten()
 
     #Display Confusion Matrix
@@ -129,7 +129,8 @@ def main():
 
     # dump the network architecture and weights to file
     print("[INFO] dumping architecture and weights to file...")
-    model.save("FFNN_whole_model_3.h5")
+    model.save("FFNN_final_test_model_30perc.h5")
 
 if __name__ == "__main__":
     main()
+
