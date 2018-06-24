@@ -7,24 +7,21 @@ from sklearn.cluster import DBSCAN
 
 #Read data & convert Y-1, N-0
 def read_data():
-    file = 'Phish_Dataset.csv'
+    file = '../Phish_Dataset.csv'
     df = pd.read_csv(file)
     df = df.replace({'target_phishYN':{'Y':1, 'N':0}})
     #fix domain names
-    #df = df[['fix_senders_email_tld']].applymap(lambda x: str(x).split(r'.')[0])
     return df
 
 def main():
   df = read_data()
   mapping = {'set': 1, 'test': 2}
-  df = df[['domain_SenderID','email_has_attachment','num_attachment_zip','fix_senders_email_tld']]
+  df = df[['domain_SenderID','email_has_attachment','num_attachment_zip']]
   
   data = df.values
   data = np.float32(data)
   max_distance = 1
-  print "enter"
   db = DBSCAN(eps=max_distance, min_samples=10).fit(data)
-  print "fail"
   core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
   core_samples_mask[db.core_sample_indices_] = True
   labels = db.labels_
@@ -43,7 +40,6 @@ def main():
   plt.xlim(min_x, max_x)
   plt.ylim(min_y, max_y)
   plt.title('Original Data', fontsize = 20)
-  print "title" 
   plt.subplot(122)
   colors = [plt.cm.Spectral(each) for each in np.linspace(0, 1, len(unique_labels))]
   for k, col in zip(unique_labels, colors):
@@ -64,8 +60,6 @@ def main():
   plt.subplots_adjust(left=0.03, right=0.98, top=0.9, bottom=0.05)
   print("not showing")
   plt.show()
-  print("fail")
-
 
 if __name__ == "__main__":
   main()
